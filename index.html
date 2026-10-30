@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cohort — Scrapbook Party v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ============ Direction 1 — Scrapbook Party ============ */
+:root{
+  --paper:#FFF8EC;
+  --purple:#9B6BFF;
+  --lime:#B6F25C;
+  --sky:#5BC8F5;
+  --sun:#FFD23F;
+  --ink:#1A1A1A;
+  --cork:#E8C79C;
+  --white:#FFFFFF;
+  --pop:4px 4px 0 #1A1A1A;
+  --pop-lg:6px 6px 0 #1A1A1A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{
+  background-color:var(--paper);
+  background-image:radial-gradient(rgba(26,26,26,.13) 1.2px, transparent 1.3px);
+  background-size:24px 24px;
+  color:var(--ink);
+  font-family:'Bricolage Grotesque',system-ui,sans-serif;
+  font-size:18px;line-height:1.5;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 48px}
+.hand{font-family:'Caveat',cursive;font-weight:700}
+
+/* ---------- shared bits ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:2.5px solid var(--ink);border-radius:999px;font-weight:700;font-size:18px;box-shadow:var(--pop);background:var(--white);white-space:nowrap}
+.btn-purple{background:var(--purple)}
+.btn-sun{background:var(--sun)}
+.btn-ink{background:var(--ink);color:var(--white)}
+.btn-sm{padding:10px 20px;font-size:16px}
+.tape{display:inline-block;padding:6px 16px;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transform:rotate(-2deg);background:var(--sun);border-left:2px dashed rgba(26,26,26,.3);border-right:2px dashed rgba(26,26,26,.3)}
+.tape-sky{background:var(--sky)}
+.tape-lime{background:var(--lime)}
+.tape-purple{background:var(--purple)}
+.tape-white{background:var(--white)}
+.chip{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;font-size:14px;font-weight:700;background:var(--paper);white-space:nowrap}
+.avatar{width:32px;height:32px;flex:none;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.bg-purple{background:var(--purple)} .bg-sky{background:var(--sky)} .bg-lime{background:var(--lime)} .bg-sun{background:var(--sun)} .bg-white{background:var(--white)}
+
+/* ---------- nav ---------- */
+.nav{display:flex;align-items:center;justify-content:space-between;padding-top:28px;padding-bottom:28px}
+.logo{display:inline-flex;align-items:center;gap:8px;padding:4px 18px 8px;background:var(--lime);border:2.5px solid var(--ink);border-radius:16px;box-shadow:var(--pop);font-weight:800;font-size:30px;letter-spacing:-.04em;transform:rotate(-3deg)}
+.links{display:flex;gap:40px;font-weight:600;font-size:17px}
+
+/* ---------- hero ---------- */
+.hero{display:flex;align-items:center;gap:48px;padding-top:36px;padding-bottom:110px}
+.hero-copy{flex:1.15;position:relative}
+.hero h1{font-size:96px;line-height:.92;letter-spacing:-.05em;font-weight:800;margin:24px 0 30px}
+.scribble{position:relative;display:inline-block;color:var(--purple)}
+.scribble svg{position:absolute;left:-4px;bottom:-16px;width:calc(100% + 8px);height:24px}
+.lead{font-size:21px;line-height:1.45;max-width:520px}
+.cta-row{display:flex;gap:16px;margin-top:36px;align-items:center}
+.hero-note{display:flex;align-items:center;gap:6px;margin-top:26px;font-size:28px;transform:rotate(-2deg)}
+
+.hero-art{flex:1;position:relative;height:660px}
+.phone{position:absolute;left:50%;top:24px;margin-left:-150px;transform:rotate(3deg);width:300px;height:610px;background:var(--ink);border-radius:48px;padding:11px;box-shadow:var(--pop-lg)}
+.screen{width:100%;height:100%;background:var(--paper);border-radius:38px;overflow:hidden;padding:40px 14px 14px;display:flex;flex-direction:column;gap:11px}
+.screen-top{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:22px;letter-spacing:-.03em;padding:0 4px}
+.mini{border:2px solid var(--ink);border-radius:16px;padding:11px 13px;font-size:14px;line-height:1.35;box-shadow:3px 3px 0 var(--ink);font-weight:500}
+.mini .who{font-size:11.5px;font-weight:700;opacity:.65;margin-bottom:4px}
+.mini .meta{font-size:12px;font-weight:700;margin-top:8px;display:flex;gap:12px}
+.tabbar{margin-top:auto;display:flex;justify-content:space-around;border:2px solid var(--ink);border-radius:999px;padding:9px 6px;background:var(--white);font-size:11px;font-weight:800}
+.tabbar span{padding:4px 10px;border-radius:999px}
+.tabbar .on{background:var(--lime);border:1.5px solid var(--ink)}
+
+.polaroid{position:absolute;left:-36px;top:170px;width:176px;padding:10px 10px 8px;background:var(--white);border:2px solid var(--ink);transform:rotate(-9deg);box-shadow:var(--pop);z-index:2}
+.polaroid .photo{height:150px;background:var(--sky);border:2px solid var(--ink);overflow:hidden}
+.polaroid .cap{font-size:24px;text-align:center;padding-top:4px}
+.burst{position:absolute;right:0;top:10px;width:136px;height:136px;transform:rotate(12deg);z-index:2}
+.burst span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;letter-spacing:-.02em;text-align:center;line-height:1}
+.heart-stk{position:absolute;left:30px;bottom:70px;width:96px;transform:rotate(-14deg);z-index:2}
+.code-stk{position:absolute;right:-10px;bottom:120px;transform:rotate(7deg);z-index:2;background:var(--sun);border:2.5px solid var(--ink);border-radius:12px;box-shadow:var(--pop);padding:8px 16px;text-align:center}
+.code-stk small{display:block;font-size:11px;font-weight:800;letter-spacing:.1em}
+.code-stk b{font-size:24px;letter-spacing:.06em}
+.tape-stk{position:absolute;right:40px;bottom:40px;z-index:2;transform:rotate(-6deg)}
+
+/* ---------- band ---------- */
+.band{background:var(--purple);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(-1.6deg);margin:0 -40px;overflow:hidden;white-space:nowrap;padding:16px 0;font-weight:800;font-size:30px;letter-spacing:-.02em;display:flex;gap:28px;justify-content:center}
+.band span.star{color:var(--sun)}
+.band-wrap{overflow:hidden;padding:24px 0}
+
+/* ---------- sections ---------- */
+.section{padding-top:130px}
+.sec-head{display:flex;gap:30px;align-items:flex-start;margin-bottom:60px}
+.sec-num{font-weight:800;font-size:128px;line-height:.78;letter-spacing:-.06em;color:var(--purple);text-shadow:5px 5px 0 var(--ink)}
+.sec-head h2{font-size:68px;line-height:.98;letter-spacing:-.045em;font-weight:800;margin:18px 0 14px}
+.sec-head p{font-size:20px;max-width:640px}
+
+/* campus feed board */
+.board{position:relative;background-color:var(--cork);background-image:radial-gradient(rgba(122,78,45,.28) 1.5px, transparent 1.6px);background-size:14px 14px;border:3px solid var(--ink);border-radius:30px;padding:60px 48px 52px;box-shadow:var(--pop-lg);display:flex;gap:34px;align-items:flex-start}
+.col{flex:1;display:flex;flex-direction:column;gap:40px}
+.note{position:relative;background:var(--white);border:2px solid var(--ink);padding:28px 22px 18px;box-shadow:var(--pop)}
+.pin{position:absolute;top:-13px;left:50%;margin-left:-12px;width:24px;height:24px;border-radius:50%;border:2px solid var(--ink);background:var(--purple)}
+.note .who{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;margin-bottom:10px}
+.note .who em{font-style:normal;opacity:.55;font-weight:500}
+.note p{font-size:20px;line-height:1.32;font-weight:500}
+.reacts{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.r-1{transform:rotate(-2.5deg)} .r-2{transform:rotate(1.8deg)} .r-3{transform:rotate(-1deg)} .r-4{transform:rotate(3deg)} .r-5{transform:rotate(-3deg)}
+.flyer{position:relative;background:var(--white);border:2px solid var(--ink);padding:28px 22px 0;box-shadow:var(--pop)}
+.flyer h4{font-size:46px;font-weight:800;letter-spacing:-.04em;line-height:.9;color:var(--purple);text-shadow:2px 2px 0 var(--ink)}
+.flyer p{font-size:18px;font-weight:600;margin-top:12px;line-height:1.3}
+.tabs{display:flex;border-top:2px dashed var(--ink);margin:20px -22px 0}
+.tabs span{flex:1;height:58px;border-right:2px dashed var(--ink);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1}
+.tabs span:last-child{border-right:none}
+.tabs span.gone{background:var(--cork);border-bottom:none}
+.board-note{position:absolute;right:46px;bottom:-30px;font-size:30px;transform:rotate(-3deg);background:var(--paper);padding:0 12px}
+
+/* mutuals */
+.duo{display:flex;gap:36px;align-items:stretch}
+.card{flex:1;border:3px solid var(--ink);border-radius:34px;padding:44px;box-shadow:var(--pop-lg);position:relative}
+.card-sky{background:var(--sky)}
+.card-purple{background:var(--purple)}
+.card.card-purple h3{max-width:330px}
+.card h3{font-size:42px;line-height:1.02;letter-spacing:-.04em;font-weight:800;margin:20px 0 10px;max-width:420px}
+.card .sub{font-size:18px;max-width:420px}
+.chat{display:flex;flex-direction:column;gap:10px;margin:30px 0 32px}
+.bubble{max-width:74%;padding:12px 18px;border:2px solid var(--ink);border-radius:22px;background:var(--white);font-size:17px;font-weight:500;line-height:1.3}
+.bubble.me{align-self:flex-end;background:var(--sun);border-bottom-right-radius:6px}
+.bubble.them{align-self:flex-start;border-bottom-left-radius:6px}
+.bubble small{display:block;font-size:12px;font-weight:700;opacity:.55;margin-bottom:2px}
+.ticket{flex:none;display:inline-flex;border:2.5px solid var(--ink);border-radius:14px;background:var(--paper);overflow:hidden;box-shadow:var(--pop)}
+.ticket .tl{padding:12px 18px;border-right:2.5px dashed var(--ink);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;line-height:1.2}
+.ticket .code{padding:8px 24px;font-size:34px;font-weight:800;letter-spacing:.08em}
+.ticket-row{display:flex;align-items:center;gap:14px}
+.ticket-row .hand{font-size:28px;transform:rotate(-4deg);white-space:nowrap}
+.nametag{background:var(--white);border:2.5px solid var(--ink);border-radius:22px;overflow:hidden;transform:rotate(-2deg);box-shadow:var(--pop);margin:30px 0 28px}
+.nametag .top{background:var(--ink);color:var(--white);text-align:center;padding:12px 0 10px;line-height:1}
+.nametag .top b{display:block;font-size:34px;letter-spacing:.04em}
+.nametag .top small{font-size:14px;font-weight:600;letter-spacing:.08em}
+.nametag .name{font-family:'Caveat',cursive;font-weight:700;font-size:72px;text-align:center;line-height:1;padding:14px 0 10px}
+.interests{display:flex;flex-wrap:wrap;gap:10px;padding:0 22px 24px;justify-content:center}
+.interests .chip:nth-child(odd){transform:rotate(-3deg)}
+.interests .chip:nth-child(even){transform:rotate(2deg)}
+.stamp{position:absolute;right:34px;top:34px;width:124px;height:124px;border-radius:50%;border:3px solid var(--ink);background:var(--sun);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;transform:rotate(12deg);font-size:19px;line-height:1.02;box-shadow:var(--pop)}
+.btn-row{display:flex;gap:12px}
+
+/* communities */
+.comm{display:flex;gap:40px;align-items:flex-start}
+.posters{flex:1.25;display:flex;flex-wrap:wrap;gap:28px}
+.poster{width:calc(50% - 14px);min-height:310px;border:3px solid var(--ink);padding:24px 26px;box-shadow:var(--pop);display:flex;flex-direction:column;justify-content:space-between;gap:20px;position:relative}
+.poster .kind{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--ink);border-radius:999px;padding:4px 12px;align-self:flex-start;background:var(--white)}
+.poster h4{font-size:46px;line-height:.92;letter-spacing:-.045em;font-weight:800}
+.poster .meta{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:15px;border-top:2px solid var(--ink);padding-top:12px}
+.poster svg.doodle{position:absolute;right:18px;top:16px}
+.events{flex:1;background:var(--white);border:3px solid var(--ink);border-radius:30px;padding:34px 30px;box-shadow:var(--pop-lg)}
+.events h3{font-size:36px;letter-spacing:-.04em;font-weight:800;line-height:1}
+.events .hand{font-size:24px;margin-top:6px;display:block;color:#555}
+.stub{display:flex;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-top:16px;background:var(--paper)}
+.stub .date{width:84px;flex:none;border-right:2px dashed var(--ink);text-align:center;padding:12px 0;font-weight:800;line-height:1;display:flex;flex-direction:column;justify-content:center}
+.stub .date small{font-size:12px;letter-spacing:.14em}
+.stub .date b{font-size:34px;letter-spacing:-.03em}
+.stub .info{padding:12px 16px;display:flex;flex-direction:column;justify-content:center}
+.stub .info b{font-size:18px;line-height:1.2}
+.stub .info span{font-size:14px;opacity:.7;font-weight:500}
+
+/* cta + footer */
+.cta{margin-top:150px;background:var(--sun);border:3px solid var(--ink);border-radius:44px;padding:80px 60px;box-shadow:var(--pop-lg);text-align:center;position:relative}
+.cta h2{font-size:92px;line-height:.92;letter-spacing:-.05em;font-weight:800}
+.cta p{font-size:20px;margin-top:20px}
+.form{display:flex;gap:12px;justify-content:center;margin-top:34px}
+.input{width:400px;padding:15px 26px;border:2.5px solid var(--ink);border-radius:999px;background:var(--white);font-size:18px;color:rgba(26,26,26,.45);text-align:left;font-weight:500}
+.cta .hand{position:absolute;font-size:30px}
+.foot{display:flex;justify-content:space-between;align-items:center;padding:56px 0 64px;font-weight:600;font-size:16px}
+
+
+/* ---------- v2: chalkboard feed ---------- */
+.chalk{position:relative;width:100%;line-height:0}
+.chalk > img{display:block;width:100%;height:auto}
+.chalk-grid{position:absolute;left:9%;right:9%;top:10%;bottom:22%;display:flex;flex-direction:column;justify-content:space-between;line-height:1.5}
+.chalk-row{display:flex;gap:40px}
+.chalk-row > *{flex:1}
+.chalk .note{padding:24px 18px 14px}
+.chalk .note p{font-size:17px;line-height:1.3}
+.chalk .note .who{margin-bottom:8px}
+.chalk .reacts{margin-top:12px}
+.chalk .flyer{padding:22px 18px 18px}
+.chalk .flyer h4{font-size:40px}
+.chalk .flyer p{font-size:16px;margin-top:8px}
+.chalk-note{position:absolute;left:9%;bottom:16%;font-family:'Caveat',cursive;font-weight:700;font-size:28px;line-height:1;color:rgba(255,255,255,.85);transform:rotate(-1deg)}
+
+/* ---------- v2: torn paper + sky ---------- */
+.card{padding-bottom:150px}
+.paper-sec{position:relative;background:#FAFAFA;margin-top:110px;padding-bottom:180px;z-index:3}
+.tear{position:absolute;left:0;width:100%;height:auto;display:block;pointer-events:none}
+.tear-up{bottom:100%;margin-bottom:-28px;transform:scaleY(-1)}
+.paper-sec .section{padding-top:40px}
+.sky-sec{position:relative;background-color:#5F86C2;background-image:url("assets/bubbleBackground.png");background-size:cover;background-position:center;padding:320px 0 40px;z-index:2}
+.tear-down{top:-24px;z-index:4}
+.sky-sec .cta{margin-top:0}
+.sky-sec .foot{margin-top:120px;padding:18px 28px;background:rgba(255,255,255,.82);border:2.5px solid var(--ink);border-radius:999px;box-shadow:var(--pop)}
+
+/* ---------- small screens ---------- */
+@media (max-width:960px){
+  .wrap{padding:0 20px}
+  .links{display:none}
+  .hero,.duo,.comm,.board,.chalk-row{flex-direction:column}
+  .chalk-grid{position:static;padding:20px 0}
+  .hero h1{font-size:58px}
+  .hero-art{width:100%;height:640px}
+  .sec-num{font-size:72px}
+  .sec-head h2{font-size:44px}
+  .poster{width:100%}
+  .cta{padding:56px 22px}
+  .cta h2{font-size:52px}
+  .form{flex-direction:column;align-items:center}
+  .input{width:100%}
+  .band{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="wrap nav">
+  <a class="logo" href="#">cohort
+    <svg width="22" height="22" viewBox="0 0 40 40"><path d="M20 3 L24.5 15 L37 15.5 L27 23.5 L30.5 36 L20 28.5 L9.5 36 L13 23.5 L3 15.5 L15.5 15 Z" fill="#9B6BFF" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round"/></svg>
+  </a>
+  <nav class="links">
+    <a href="#feed">Campus Feed</a>
+    <a href="#mutuals">Mutuals</a>
+    <a href="#communities">Communities</a>
+  </nav>
+  <a class="btn btn-purple btn-sm" href="#join">Get early access</a>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="wrap hero">
+  <div class="hero-copy">
+    <span class="tape">for UMD students ✦ beta fall '26</span>
+    <h1>Find your people.<br><span class="scribble">For real this time.
+      <svg viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M4 16 C 70 4, 130 22, 200 10 S 330 6, 396 14" stroke="#1A1A1A" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+    </span></h1>
+    <p class="lead">Cohort is the campus feed, group chat, and club board for students who are tired of scrolling alone. No algorithm deciding who you meet — just your campus, out loud.</p>
+    <div class="cta-row">
+      <a class="btn btn-purple" href="#join">Get early access →</a>
+      <a class="btn" href="#feed">See how it works</a>
+    </div>
+    <div class="hero-note hand">
+      <svg width="54" height="34" viewBox="0 0 54 34"><path d="M50 6 C 36 2, 18 6, 8 24 M8 24 L4 12 M8 24 L19 20" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      made by students, not by a robot
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <!-- polaroid -->
+    <div class="polaroid">
+      <div class="photo">
+        <svg width="152" height="146" viewBox="0 0 152 146">
+          <circle cx="118" cy="32" r="16" fill="#FFD23F" stroke="#1A1A1A" stroke-width="2.5"/>
+          <path d="M0 116 C 40 100, 100 104, 152 112 V146 H0Z" fill="#B6F25C" stroke="#1A1A1A" stroke-width="2.5"/>
+          <circle cx="54" cy="62" r="11" fill="#FFF8EC" stroke="#1A1A1A" stroke-width="2.5"/>
+          <path d="M54 73 V100 M54 82 L40 92 M54 82 L72 76 M54 100 L44 118 M54 100 L62 118" stroke="#1A1A1A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="92" cy="64" r="11" fill="#9B6BFF" stroke="#1A1A1A" stroke-width="2.5"/>
+          <path d="M92 75 V102 M92 84 L74 78 M92 84 L106 70 M92 102 L84 120 M92 102 L100 120" stroke="#1A1A1A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M50 60 h2 M57 60 h2 M88 62 h2 M95 62 h2" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="cap hand">first mutual :)</div>
+    </div>
+
+    <!-- burst sticker -->
+    <div class="burst">
+      <svg width="136" height="136" viewBox="0 0 100 100"><polygon points="98,50 85,64 84,84 65,85 50,98 35,85 16,84 15,65 2,50 15,35 16,16 35,15 50,2 65,15 84,16 85,35" fill="#B6F25C" stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <span>no AI<br>slop!</span>
+    </div>
+
+    <!-- phone -->
+    <div class="phone">
+      <div class="screen">
+        <div class="screen-top">campus feed
+          <svg width="24" height="24" viewBox="0 0 40 40"><path d="M20 3 L24.5 15 L37 15.5 L27 23.5 L30.5 36 L20 28.5 L9.5 36 L13 23.5 L3 15.5 L15.5 15 Z" fill="#FFD23F" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="mini bg-sun"><div class="who">@geesewatch · 4m</div>who let the geese into the library quad again 😭<div class="meta"><span>♥ 312</span><span>↳ 48</span></div></div>
+        <div class="mini bg-white"><div class="who">@mira.k · 12m</div>study group for STAT400 tonight? we have snacks + a whiteboard<div class="meta"><span>♥ 41</span><span>↳ 9</span></div></div>
+        <div class="mini bg-sky"><div class="who">@night.owls · 30m</div>midnight pancake run is ON. meet at the union steps 🥞<div class="meta"><span>♥ 128</span><span>↳ 22</span></div></div>
+        <div class="mini bg-lime"><div class="who">@anon · 1h</div>shoutout to whoever left free plants outside the dorm 🌱<div class="meta"><span>♥ 506</span><span>↳ 61</span></div></div>
+        <div class="tabbar"><span class="on">Feed</span><span>Mutuals</span><span>Groups</span></div>
+      </div>
+    </div>
+
+    <!-- heart sticker -->
+    <svg class="heart-stk" viewBox="0 0 100 90"><path d="M50 84 C 20 64, 4 46, 6 26 C 8 10, 30 2, 50 22 C 70 2, 92 10, 94 26 C 96 46, 80 64, 50 84Z" fill="#9B6BFF" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round"/><path d="M26 24 C 30 18, 36 16, 40 18" stroke="#FFFFFF" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+
+    <div class="code-stk"><small>my friend code</small><b>COH·4F7K</b></div>
+    <span class="tape tape-sky tape-stk">#lost&amp;found</span>
+  </div>
+</section>
+
+
+<!-- ================= 01 CAMPUS FEED ================= -->
+<section class="wrap section" id="feed">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <div>
+      <span class="tape tape-sky">Campus Feed</span>
+      <h2>A digital third space<br>for the whole campus.</h2>
+      <p>One big message board for everyone at UMD. Lost water bottles, hot takes about dining hall waffles, last-minute study groups — the stuff that actually happens here.</p>
+    </div>
+  </div>
+
+  <div class="chalk">
+    <img src="assets/blackboard.png" alt="chalkboard" width="1100" height="605">
+    <div class="chalk-grid">
+      <div class="chalk-row">
+        <div class="note r-1">
+          <span class="pin"></span>
+          <div class="who"><span class="avatar bg-sky">MK</span>@mira.k <em>· 12m</em></div>
+          <p>anyone else hear the geese screaming outside McKeldin at 2am??</p>
+          <div class="reacts"><span class="chip">♥ 214</span><span class="chip">↳ 38</span></div>
+        </div>
+        <div class="flyer r-2">
+          <span class="pin" style="background:#FFD23F"></span>
+          <h4>LOST!!</h4>
+          <p>green water bottle w/ frog stickers, ESJ 2nd floor. his name is Gerald.</p>
+        </div>
+        <div class="note r-3 bg-sky">
+          <span class="pin" style="background:#B6F25C"></span>
+          <div class="who"><span class="avatar bg-sun">PH</span>@peichi <em>· 20m</em></div>
+          <p>free zine-making night tomorrow. bring old magazines ✂️</p>
+          <div class="reacts"><span class="chip">♥ 156</span><span class="chip">↳ 24</span></div>
+        </div>
+      </div>
+      <div class="chalk-row">
+        <div class="note r-4 bg-lime">
+          <span class="pin" style="background:#5BC8F5"></span>
+          <div class="who"><span class="avatar bg-white">DJ</span>@dj.tofu <em>· 1h</em></div>
+          <p>need 2 more for intramural volleyball. zero skill required.</p>
+          <div class="reacts"><span class="chip">♥ 89</span><span class="chip">↳ 17</span></div>
+        </div>
+        <div class="note r-5 bg-sun">
+          <span class="pin"></span>
+          <div class="who"><span class="avatar bg-purple">AN</span>anonymous <em>· 3h</em></div>
+          <p>hot take: the dining hall waffles are elite. no questions.</p>
+          <div class="reacts"><span class="chip">♥ 1.2k</span><span class="chip">↳ 302</span></div>
+        </div>
+        <div class="note r-1">
+          <span class="pin" style="background:#5BC8F5"></span>
+          <div class="who"><span class="avatar bg-lime">LT</span>@lt.reads <em>· 5h</em></div>
+          <p>transfer student, don't know anyone yet. where do people hang out?</p>
+          <div class="reacts"><span class="chip">♥ 340</span><span class="chip">↳ 97</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chalk-note">sorted by time — not by an algorithm ✦</div>
+  </div>
+</section>
+
+<!-- ================= 02 MUTUALS ================= -->
+<section class="wrap section" id="mutuals">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div>
+      <span class="tape tape-lime">Mutuals</span>
+      <h2>Keep your friends.<br>Make a few more.</h2>
+      <p>Mutuals has two sides: chat with the people you already know, or get introduced to someone new who shares your weird little interests.</p>
+    </div>
+  </div>
+
+  <div class="duo">
+    <!-- existing -->
+    <div class="card card-sky">
+      <span class="tape tape-white">Existing</span>
+      <h3>Your friends, one tap away.</h3>
+      <p class="sub">1-on-1 chats with people you already know. Add anyone with a friend code — no phone number swapping.</p>
+      <div class="chat">
+        <div class="bubble them"><small>Ari</small>omw to Stamp, want anything?</div>
+        <div class="bubble me">an iced chai pls 🙏 i'll venmo u</div>
+        <div class="bubble them"><small>Ari</small>bet. also we're doing movie night fri</div>
+        <div class="bubble me">say less</div>
+      </div>
+      <div class="ticket-row">
+        <div class="ticket"><div class="tl">your<br>friend code</div><div class="code">COH·4F7K</div></div>
+        <span class="hand">← share it!</span>
+      </div>
+    </div>
+
+    <!-- new -->
+    <div class="card card-purple">
+      <span class="tape tape-white">New</span>
+      <h3>Meet someone who gets it.</h3>
+      <p class="sub">Get matched with a student nearby based on what you're into — then decide if you want to say hi.</p>
+      <div class="nametag">
+        <div class="top"><b>HELLO</b><small>MY NAME IS</small></div>
+        <div class="name">Jordan</div>
+        <div class="interests">
+          <span class="chip bg-sun">📷 film photography</span>
+          <span class="chip bg-lime">🐸 frogs</span>
+          <span class="chip bg-sky">🍜 late-night pho</span>
+          <span class="chip bg-white">🎸 post-punk</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-sun" href="#">wave 👋</a>
+        <a class="btn" href="#">maybe later</a>
+      </div>
+      <div class="stamp">3 things<br>in<br>common!</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 COMMUNITIES (torn paper) ================= -->
+<div class="paper-sec">
+<img class="tear tear-up" src="assets/brokenPaper.png" alt="">
+<section class="wrap section" id="communities">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div>
+      <span class="tape tape-purple">Communities</span>
+      <h2>Clubs, crews &amp;<br>whatever this is.</h2>
+      <p>Boards for official orgs and completely unofficial ones. When a board gets active, its public events show up on the all-campus events page.</p>
+    </div>
+  </div>
+
+  <div class="comm">
+    <div class="posters">
+      <div class="poster bg-sun r-1">
+        <span class="kind">unofficial</span>
+        <svg class="doodle" width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="18" fill="none" stroke="#1A1A1A" stroke-width="3"/><path d="M14 18 L42 40 M12 30 L36 46 M22 10 L46 30" stroke="#1A1A1A" stroke-width="2.5"/><path d="M44 46 L52 54" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/></svg>
+        <h4>Terp Knitting Circle</h4>
+        <div class="meta"><span>84 members</span><span>Thu nights</span></div>
+      </div>
+      <div class="poster bg-purple r-2">
+        <span class="kind">unofficial</span>
+        <svg class="doodle" width="56" height="56" viewBox="0 0 56 56"><path d="M8 14 H26 V46 H8Z M30 14 H48 V46 H30Z" fill="#FFF8EC" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round"/><path d="M13 22 H21 M13 28 H21 M35 22 H43 M35 28 H43" stroke="#1A1A1A" stroke-width="2.5"/></svg>
+        <h4>Sad Girl Book Club</h4>
+        <div class="meta"><span>212 members</span><span>monthly</span></div>
+      </div>
+      <div class="poster bg-sky r-3">
+        <span class="kind">official org</span>
+        <svg class="doodle" width="56" height="56" viewBox="0 0 56 56"><rect x="12" y="16" width="32" height="26" rx="6" fill="#FFF8EC" stroke="#1A1A1A" stroke-width="3"/><circle cx="22" cy="28" r="3.5" fill="#1A1A1A"/><circle cx="34" cy="28" r="3.5" fill="#1A1A1A"/><path d="M28 16 V8 M24 8 H32" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/></svg>
+        <h4>Robotics Society</h4>
+        <div class="meta"><span>156 members</span><span>verified ✓</span></div>
+      </div>
+      <div class="poster bg-lime r-4">
+        <span class="kind">unofficial</span>
+        <svg class="doodle" width="56" height="56" viewBox="0 0 56 56"><path d="M38 10 C 26 12, 18 22, 20 34 C 22 44, 34 50, 44 44 C 34 44, 26 36, 28 26 C 29 18, 34 12, 38 10Z" fill="#FFD23F" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round"/></svg>
+        <h4>Night Owl Run Club</h4>
+        <div class="meta"><span>67 members</span><span>11pm-ish</span></div>
+      </div>
+    </div>
+
+    <div class="events">
+      <h3>All campus events</h3>
+      <span class="hand">auto-filled from your most active boards ✦</span>
+      <div class="stub"><div class="date bg-sun"><small>OCT</small><b>17</b></div><div class="info"><b>Frog pond clean-up</b><span>Lake Artemesia · Wilderkind Club</span></div></div>
+      <div class="stub"><div class="date bg-purple"><small>OCT</small><b>20</b></div><div class="info"><b>Zine-making night</b><span>Hornbake Library · Paper Cuts</span></div></div>
+      <div class="stub"><div class="date bg-sky"><small>OCT</small><b>23</b></div><div class="info"><b>Open mic: no talent required</b><span>Stamp Student Union · Mic Drop</span></div></div>
+      <div class="stub"><div class="date bg-lime"><small>OCT</small><b>29</b></div><div class="info"><b>Midnight pancake run</b><span>South Campus · Night Owl Run Club</span></div></div>
+      <a class="btn btn-ink btn-sm" href="#" style="margin-top:22px">see all 48 events →</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ================= CTA (sky) ================= -->
+<div class="sky-sec">
+<img class="tear tear-down" src="assets/brokenPaper.png" alt="">
+<section class="wrap" id="join">
+  <div class="cta">
+    <span class="hand" style="left:52px;top:34px;transform:rotate(-8deg)">psst ✦</span>
+    <h2>Your campus is<br>louder than your feed.</h2>
+    <p>Join the waitlist and be one of the first Terps on Cohort.</p>
+    <span class="hand" style="right:60px;bottom:30px;transform:rotate(-4deg)">no spam. only friends.</span>
+  </div>
+</section>
+
+<div class="wrap"><footer class="foot">
+  <span class="logo" style="font-size:22px">cohort</span>
+  <span>made by humans in College Park, MD ✦ 2026</span>
+  <span>Instagram · TikTok · Contact</span>
+</footer></div>
+</div>
+
+</body>
+</html>
